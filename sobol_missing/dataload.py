@@ -24,7 +24,7 @@ class dataset:
         #np.random.seed(24)   
     
     def ishigami(self):
-        return lambda a, b:  np.sin(self.df['X1']) + a * np.sin(self.df['X2'])**2 + b * (self.df['X3'])**4 * np.sin(self.df['X1']) + np.random.normal(0, 0.01, self.n)
+        return lambda a, b:  np.sin(self.df['X1']) + a * np.sin(self.df['X2'])**2 + b * (self.df['X3'])**4 * np.sin(self.df['X1']) + np.random.normal(0, 0.05, self.n)
     
     def toyreg(self):
         return lambda b1,b2: b1*self.df['X1'] + b2*self.df['X2'] + np.random.normal(0, 0.1, self.n)
@@ -38,11 +38,14 @@ class dataset:
     def picked(self,request,a,b):
         #request are the variables to be randomized, e.g. ['X2','X3']
         newdf = self.df.copy()
-        values  = [list(pd.Series(np.random.uniform(0,1,self.n)))]*len(request)
+        values  = [list(pd.Series(np.random.uniform(0,1,self.n)))]*len(request) #np.random.normal for toy example
         dictionary = dict(zip(request, values))
         for col, new_values in dictionary.items():
             newdf = newdf.assign(**{col: new_values})
         return newdf
+    
+        
+        
     
     def mcar(self,a,b):
         #self.df['Y'] = self.ishigami()(a,b)
