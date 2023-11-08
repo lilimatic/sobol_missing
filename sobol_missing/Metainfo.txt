@@ -1,0 +1,14 @@
+
+Name of Quantlet: 'sobol_missing'
+
+Published in: 'Subset selection with missing values'
+
+Description: 'Simulation study analysing how missing values affect Sobol indices'
+
+Keywords: 'Missing values, Sobol indices, Shapley values'
+
+Author: 'Jovanka Lili Matic'
+
+Submitted:  'November 2023'
+
+
